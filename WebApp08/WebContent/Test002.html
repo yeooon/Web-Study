@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test002.jsp</title>
+
+<style>
+	button {width: 208px; height: 25px; font-weight: bold;}
+	.errMsg{font-size: small; color: red;}	
+	#numTitle {width: 50px;}
+	#nameTitle {width: 100px;}
+	#telTitle {widows: 160px;}
+	.list {text-align: center;}
+</style>
+
+<script type="text/javascript">
+	
+	function formCheck()
+	{
+		alert("함수 확인");
+		
+		return false;
+	}
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>데이터베이스 연결 및 데이터 처리</h1>
+	<hr />
+</div>
+
+<div>
+	<!-- 데이터 입력 -->
+	<form action="MemberInsert.jsp" method="post" onsubmit="return formCheck()">
+		<table>
+			<tr>
+				<th>이름(*)</th>
+				<td>
+				<input type="text" id="userName" name="userName" class="txt"/>
+				<span class="errMsg" id="nameErr">이름을 입력해야 합니다.</span>
+				</td>
+			</tr>
+			<tr>
+				<th>전화번호</th>
+				<td>
+				<input type="text" id="userTel" name="userTe;" class="txt"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<th></th>
+				<td>
+				<button type="submit" id="btnAdd" class="btn control">데이터 추가</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+<br><br>
+
+<div>처리 결과</div>
+
+</body>
+</html>

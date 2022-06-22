@@ -1,0 +1,122 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- 기기별 크기 담당 -->
+<meta name="viewport" content="width=device-width", initial-scale="1">
+<!-- 디자인 담당 -->
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/custom.css"> <!-- 작성한 css 파일 참조 -->
+<title>ad_main.jsp</title>
+<link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
+<style type="text/css">
+body {
+    background: #f2f2f2;
+    font-family: 'Poppins', sans-serif;
+}
+
+.social-box .box {
+    background: #FFF;
+    border-radius: 10px; 
+    cursor: pointer;
+    margin: 20px 0;
+    padding: 40px 10px;
+    transition: all 0.5s ease-out;
+}
+
+.social-box .box:hover {
+   box-shadow: 0 0 6px #4183D7;
+}
+
+.social-box .box-text {
+    font-size: 15px;
+    line-height: 30px;
+    margin: 20px 0;
+}
+
+.social-box .box-btn a {
+    color: #4183D7;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.social-box .fa {
+    color: #4183D7;
+}
+</style>
+</head>
+<body>
+
+<div class="social-box">
+    <div class="container">
+     	<div class="row">
+     	
+		    <div class="col-lg-6 col-xs-12 text-center">
+				<div class="box">
+                    <i class="fa fa-behance fa-3x" aria-hidden="true"></i>
+					<div class="box-title">
+						<h3>회원관리</h3>
+					</div>
+					<div class="box-text">
+						<span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.</span>
+					</div>
+					<div class="box-btn">
+					    <a href="#">Learn More</a>
+					</div>
+				 </div>
+			</div>	 
+			
+			 <div class="col-lg-6 col-xs-12  text-center">
+				<div class="box">
+				    <i class="fa fa-twitter fa-3x" aria-hidden="true"></i>
+					<div class="box-title">
+						<h3>카테고리 관리</h3>
+					</div>
+					<div class="box-btn">
+					    <a href="#">Learn More</a>
+					</div>
+				 </div>
+			</div>	 
+			
+			<div class="col-lg-6 col-xs-12 text-center">
+				<div class="box">
+                    <i class="fa fa-pinterest-p fa-3x" aria-hidden="true"></i>
+					<div class="box-title">
+						<h3>거래 관리</h3>
+					</div>
+					<div class="box-btn">
+					    <a href="#">Learn More</a>
+					</div>
+				 </div>
+			</div>	 
+			
+			<div class="col-lg-6 col-xs-12 text-center">
+				<div class="box">
+				    <i class="fa fa-google-plus fa-3x" aria-hidden="true"></i>
+					<div class="box-title">
+						<h3>고객 센터</h3>
+					</div>
+					<div class="box-btn">
+					    <a href="#">Learn More</a>
+					</div>
+				 </div>
+			</div>	 
+			
+		</div>		
+    </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test021.html</title>
+<style type="text/css">
+*
+input{font-family: 굴림체; font-style: bold; color: pink}
+.btn{margin-left: 50px; width: 120px;}
+input {width: 100px; text-align: center;}
+.txt{text-align: center; width: 300px}
+
+
+</style>
+
+<script type="text/javascript">
+
+function Test()
+{
+	//임의의 정수 입력받기
+	var num = document.getElementById("Arr").value;
+	
+	//배열 구성하기(공백 포함시키기)
+	var arr = num.split(" "); 
+	//-- split 문자열을 배열로 변환
+	
+	//배열 출력하기 
+	document.getElementById("Result").value = arr;
+	
+	//가장 큰 값 구하기 → 이해는 됐는데, 이것도 걍 외우면 편할듯
+	// [ 1 3 5 110]
+	// max < Number(arr[i])
+	//	 5 < 110 이 관계일때 
+	//   max 값은 110이 된다
+	//   110 < 110 이 성립안 하니까 ↑ 위의 값으로 최종 결정되는 것.
+	var max = Number(arr[0]);
+	
+	for (var i = 0; i < arr.length; i++)
+	{
+		if (max<Number(arr[i]))
+		{
+			max = Number(arr[i])
+		}
+	}
+	document.getElementById("Max").value = max;
+	
+	
+}
+
+</script>
+
+</head>
+<body>
+
+
+<!-- 
+	사용자로부터 임의의 정수를 임의의 갯수만큼 입력받고,
+	그 내용으로 배열을 구성하여
+	구성한 정수들 중 가장 큰 수를 출력해 줄 수 있는 페이지를 구현한다.
+	HTML, CSS, Javascript 활용
+	
+	페이지 레이아웃
+	-----------------------------------------------
+	데이터 입력(공백 구분) [ 21 86 285 43 7 ]
+				< 결과 확인 > 
+	- 전체 출력 [ 21 86 285 43 7]
+	- 가장 큰 수 [ 285 ]			
+	-----------------------------------------------
+
+
+ -->
+ 
+ <div>
+ 	<form>
+ 		<table>
+ 			<tr>
+	 			<td>데이터 입력(공백 구분)
+	 			<input type="text" id="Arr" class="txt"></td>
+ 			</tr>
+ 			<tr>
+ 			<td><input type="button" value="< 결과 확인 >" class="btn" onclick="Test()">
+ 			</tr>
+ 			<tr>
+ 			<td>전체출력
+ 			<input type="text" id="Result" class="txt" disabled="disabled"></td>
+ 			</tr>
+ 			<tr>
+ 			<td>가장 큰 수
+ 			<input type="text" id="Max" class="txt" disabled="disabled"></td>
+ 			</tr>
+ 		</table>
+ 	</form>
+ </div>
+ 
+</body>
+</html>

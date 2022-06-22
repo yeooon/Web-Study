@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test027.html</title>
+
+<style type="text/css">
+*
+{
+	background-color: #fadee1;	
+	font-weight: bold;
+	font-family: 맑은 고딕;
+	text-align: center;
+}
+</style>
+
+<script type="text/javascript">
+
+	function creatLotto()
+	{
+		alert("로또를 시작합니다.");
+		
+		//초기화 한 다음에 다시 나오게 하려면? → ??
+		document.getElementById("Result").value = "";
+
+		// 유저가 주문한 숫자 불러옴 
+		var num = parseInt(document.getElementById("user").value);
+		//alert(num);
+		
+		//출력
+		for (var i = 0; i < num; i++)
+		{
+			document.getElementById("Result").value += lotto() + "\n";
+		}
+	}
+	
+	//값이 이상한데 lotto()가 뭔가 잘못됐음 → 섞기(난수처리) 여기서 잘못 섞었음
+	function lotto()
+	{
+		//난수를 담을 배열 만듬(6개뽑기)
+		//var arr = [?,?,?,?,?,?];
+		var arr = new Array(6);
+		
+		//빈 공 45개 만들기
+		var ball = new Array(45);
+		
+		// 1 ~ 45까지의 숫자를 빈 공에 채우기
+		for (var i=1; i<=ball.length; i++)
+		{
+			ball[i-1] = i; 
+		}
+		
+		
+		//alert(ball[10]); → 영원히 10이 나옴
+		
+		
+		// 섞기(난수처리)
+		for (var i=0; i<ball.length; i++)
+		{
+			//난수 생성
+			var random = parseInt(Math.random() * 45) + 1;
+			
+			// 생성된 볼 값을 temp에
+			var temp = ball[i];
+			// 6개 값과 랜덤 값을 서로 바꿈
+			ball[i] = ball[random];
+			ball[random] = temp;
+		}
+		//alert(ball); → 확인결과 무작위 난수 45개 나옴
+		
+		
+		//45개 무작위 난수를 6개 배열방에 옮겨담기
+		for (var i = 0; i<arr.length; i++)
+		{
+			arr[i] = ball[i];
+		}
+		//--> 확인 결과 6개 맞게 나옴
+		
+		//정렬
+		arr.sort(function(left,right)
+		{
+			return Number(left) - Number(right);
+		});
+	
+		//배열 반환
+		return arr;
+		
+	}
+</script>
+</head>
+<body>
+
+<!-- 로또 번호(1 ~ 45)를 중복되지 않은 정수 6개를 생성하여
+	출력해주는 페이지를 구현한다.
+	HTML, CSS, Javascript 를 활용한다.
+	난수 발생 함수를 활용한다.
+	번호순으로 (오름차순) 정렬하여 출력할 수 있도록 한다.
+	주문한 장 수 만큼 출력할 수 있도록 한다. 
+	
+	페이지 레이아웃
+	-------------------------------------------------------
+	로또 [		] 장 < 주문하기 >
+			  ㄴtext 		ㄴbutton	
+	결과
+	----------------------------- - textarea
+	
+	
+	-----------------------------
+	-------------------------------------------------------
+	-->
+
+<div>
+	<h1>로또 자바스크립트</h1>
+	<hr>
+</div>	
+
+<div>
+	<form>
+	<input type="text" class="txt" id="user">
+	<br>
+	<input type="button" class="btn" value="< 주문하기 >" onclick="creatLotto()">
+	<br>
+	<textarea rows="30" cols="30" class="txt" id="Result" disabled="disabled"></textarea>
+	</form>
+</div>
+
+</body>
+</html>

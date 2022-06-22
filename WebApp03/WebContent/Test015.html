@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test015.html</title>
+
+	<style type="text/css">
+	*
+	{
+		color: #343;
+		font-family: 맑은 고딕;
+	}	
+	input.box:focus 
+	{
+		background-color: pink;
+	}
+	input.btn:hover
+	{
+		color: green;
+		font-weight: bold;
+	}
+	
+	input.numberBox
+	{
+		width: 50px;
+		text-align: right;
+	}
+
+	</style>
+
+	<script type="text/javascript">
+	
+	function actionBtnA()
+	{
+		//테스트
+		//alert("A 버튼 클릭 확인~!!!");
+		//alert(document.getElementById("txtLeft"));
+		//alert(document.getElementById("txtLeft").value);
+		
+		var txt01 = document.getElementById("txtLeft");
+		var txt02 = document.getElementById("txtRight");
+		
+		//alert(txt02.value)
+		//alert(txt02);
+		
+		var leftStr = txt01.value;
+		
+		txt02.value = leftStr;
+		
+	}
+	
+	function actionBtnB()
+	{
+		//테스트
+		//alert("B 버튼 클릭 확인~!!!");
+		
+		var txt01 = document.getElementById("txtLeft");
+		var txt02 = document.getElementById("txtRight");
+		
+		var rightStr = txt02.value;
+		txt01.value = rightStr;
+	}
+	
+	function actionResult()
+	{
+		// .value를 붙여야 내가 입력한 값을 담아준다.
+		// 안 붙이면 객체만 받아오는 셈이 됨.
+		var txt01 = document.getElementById("txtNumber01").value;
+		var txt02 = document.getElementById("txtNumber02").value;
+		
+		//alert("계산 두구두구두구");
+		//alter(txt01);
+		
+		// Number()를 넣어야 숫자로 변환, 인식이 가능하다.
+		// var result = txt01 + txt02;
+		// var result = parseInt(txt01 + txt02); 		//-- 문자열 결합된 상태에서 정수 변환
+		
+		// var result = parseInt(num1) + parseInt(num2);
+		//						"123"			 "123"
+		
+		var result = Number(txt01) + Number(txt02);
+		
+		document.getElementById("txtResult").value = result;
+		
+		document.getElementById("txtResult").value
+		= parseInt(document.getElementById("txtResult").value)
+		
+	}
+	
+	</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 기본 관찰</h1>
+	<hr>
+</div>
+
+<div>
+	<br>
+	<input type="text" class="box" id="txtLeft">	
+	<input type="button" value="A버튼" class="btn" id="btnA" onclick="actionBtnA()">
+    <input type="button" value="B버튼" class="btn" id="btnB" onclick="actionBtnB()">
+    <input type="text" class="box" id="txtRight">		
+	<br>
+	<hr>
+	<br>
+	
+	<input type="text" class="numberBox" id="txtNumber01">
+	+
+	<input type="text" class="numberBox" id="txtNumber02">
+	<input type="button" value=" = " class="btn" id="btnResult" onclick="actionResult()">
+	<input type="text" class="numberBtn" id="txtResult">
+	
+
+</div>
+
+</body>
+</html>

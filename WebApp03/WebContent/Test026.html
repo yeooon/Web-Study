@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test026.html</title>
+
+<style type="text/css">
+*
+{
+	background-color: #fadee1;	
+	font-weight: bold;
+	font-family: 맑은 고딕;
+	text-align: center;
+}
+
+	   /* 둥근네모 */
+input {width: 30px; height: 20px} 
+     /* 칸에 마우스 올리면 흰색 됨 */
+input:focus {background-color: white;}
+	 /* 버튼에 마우스 올리면 글자색 흰색 됨 */
+.btn:hover{color:white;}
+ 	 /* 버튼꾸미기 */
+.btn
+{
+	background-color: #d4f0f0;
+	color: black;
+	width: 150px; height: 35px;
+	font-size: 16px
+}
+
+</style>
+
+
+<script type="text/javascript">
+
+function Test()
+{
+	
+	// 가위바위보 배열
+	var arr = ["가위","바위","보"];
+	
+	// 난수를 발생시켜서
+	var random = parseInt(Math.random() * 3) + 1; //(Math.random() = 실수값)
+	
+	// 사용자가 입력한 값을 데려옴 
+	var user = parseInt(document.getElementById("UserText").value);
+	
+	var msg = "";
+	
+	msg += "사용자 : " + arr[user-1] + " vs 컴퓨터 : " + arr[random-1];
+	// 사용자 값이랑 비교함 → 결과 출력
+	/*
+	1=1 2=2 3=3 비김
+	사용자 컴퓨터
+	1가위 < 2바위 짐
+	2바위   3보   짐
+	3보     1가위 짐
+	1가위 < 3보   이김
+	2바위   1가위 이김
+	3보     2바위 이김
+	*/
+/* 이렇게 진행했을 때는 멀쩡하게 됐는데, 왜 NaN 값이 뜰까.	→ 연산자가 틀려서 그럼	
+	if (user==random)
+	{
+		alert("[사용자 : " + user + "]    [컴퓨터 : " + random + "] → 비겼습니다." );
+	}
+	else if (user%3 == (random+2)%3) 
+	{
+		alert("[사용자 : " + user + "]    [컴퓨터 : " + random + "] → 당신이 졌습니다." );
+	}
+	else
+	{
+		alert("[사용자 : " + user + "]    [컴퓨터 : " + random + "] → 당신이 이겼습니다." );
+	}	
+*/
+	alert("확인");
+	
+	if (user==1 && random==1 || user==2 && random==2 || user==3 && random==3)
+	{
+		msg += "→ 비겼습니다.";
+	}
+	else if (user==1 && random=2 || user==2 && random==3 || user==3 && random==1)
+	{
+		msg += "→ 당신이 졌습니다.";	
+	}
+	else 
+	{
+		msg += "→ 당신이 이겼습니다.";
+	}
+	
+	
+	//else if (user%3 == (random+2)%3) → 당신이 졌습니다
+	//가위바위보 수식
+
+	
+	document.getElementById("Result").value = msg;
+}
+
+
+</script>
+
+</head>
+<body>
+
+<!-- w3schools.com -->
+<!-- koxo.com -->
+
+
+<!-- 가위 바위 보 게임을 구성한다.
+	HTML, CSS, Javascript 를 활용한다.
+	자바스크립트 난수 발생 함수를 찾아 활용한다.
+	
+	페이지 레이아웃
+	-----------------------------------------------------
+	입력(1.가위, 2.바위, 3.보) 	[		] <게임 결과 확인>
+	
+	[ 사용자 : 바위 	컴퓨터:보 	→ 컴퓨터가 이겼습니다.]
+	
+	-----------------------------------------------------
+	-->
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		입력(1.가위, 2.바위, 3.보)<br>
+		<input type="text" class="txt" id="UserText">
+		<br>
+		<input type="button" class="btn" value="게임 결과 확인" onclick="Test()"></button>
+		<br>
+		<textarea rows="10" cols="50" class="txt" id="Result" disabled="disabled"></textarea>	
+	</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest01</title>
+<script type="text/javascript">
+
+	/* var myJsonObject2 = {"test" : "hello"} */
+	
+	var myJsonObject2 = 
+	{
+			"test" : "hello"
+			/* "test" : "new test" */
+	}
+
+</script>
+</head>
+<body>
+
+<form action="">
+	<input type="button" value="click" onclick="alert(myJsonObject2.test)"/>
+	<!-- hello -->
+	<input type="button" value="click2" 
+	onclick="myJsonObject2.test='new test'; alert(myJsonObject2.test)"/>
+	<!-- new test -->
+
+</form>
+
+</body>
+</html>

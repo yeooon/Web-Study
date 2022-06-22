@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test019.html</title>
+
+<style type="text/css">
+*
+input {font-family: 맑음고딕;}
+input.btn {width: 80px;}
+td {text-align: left;}
+.Num {text-align: right;}
+</style>
+
+<script type="text/javascript">
+
+function test()
+{
+	
+	// 이걸 넣는 이유가 뭘까...
+	// 결과 쌓이는 거 방지래. 이전 것을 지우고... 칠판을 지워버리는 역할.
+	document.getElementById("result").value = "";
+	
+	//100을 입력했을 때
+	var num = document.getElementById("Number").value;
+	Vnum= parseInt(num);	//<-- 입력값
+	// var Vnum = Number(document.getElementById("Number").value); 와 같다.
+	var nSum = 0; // <-- 합산값
+	
+	// Vnum = 100
+	
+	if (Vnum<100)
+	{
+		alert("100이상의 숫자만 입력 가능합니다.");
+		// 리턴 안 하면 여기서 멈추지 않고 결과값을 계산한다.
+		return;
+	}
+	
+	// 100 두 번 나오는거 어케 멈추냐... 
+	// n<num → n<num 로 바꿨다 / 그럼 안나오긴 하는데 1 ~ 100 값이 4950이 되어버려
+	// + 누적값 구하는 공식까지 집어넣으면 100 두번 나오는 거 멈춤
+	for (var n=1 ; n<Vnum ; n++)
+	{	
+		nSum += n;
+		
+		if (n%10==0)
+		{
+			document.getElementById("result").value += "1 ~ " + n + " : " + nSum + "\n";
+		}
+	}
+	
+	/* 누적값 구하는 공식
+	누적값 = 입력값*(입력값+1)/2 */
+	nSum = Vnum*(Vnum+1)/2;
+	document.getElementById("result").value += "1 ~ " + Vnum + " : " + nSum + "\n";
+}
+
+
+</script>
+
+</head>
+<body>
+
+
+<!-- 
+	사용자로부터 임의의 정수 n을 입력받아
+	1 부터 n까지의 합을 계산하되 n 은 100 이상만 허용하고
+	출력 시 10의 배수가 될 때 마다 중간 합을 출력할 수 있는 페이지를 구성한다.
+	반복문을 활용할 수 있도록 한다.
+	
+	HTML, CSS, Javascript 활용
+	
+	페이지 레이아웃					 (입력값은 100 이상만 가능~!!!)
+	--------------------------------------------------------
+	정수 입력(100 이상) [  100	] → 조건 유효성(100 이상인지 확인)
+	(경고창을 통해 100 미만이라는 걸 알려줌)
+	(100을 입력)
+	< 결과 >	< 취소 >
+	--------------------------- → textarea
+	1 ~ 10 : 55
+	1 ~ 20 : 210
+	1 ~ 30 : xxx
+		:
+	1 ~ 100 : 5050	
+	---------------------------
+	
+	
+	--------------------------------------------------------
+ -->
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<table>
+		<tr>
+			<td>정수 입력</td>
+			<td><input type="text" class="Num" id="Number"></td>
+		</tr>
+		<tr>
+			<td><input type="button" class="btn" value="결과" onclick="test()"></td>
+			<td><input type="button" class="btn" value="취소" onclick=""></td>
+		</tr>
+		</table>
+		
+		<div>
+			<textarea rows="10" cols="43" id="result" disabled="disabled"></textarea>
+		</div>
+		
+	</form>
+</div>
+
+</body>
+</html>

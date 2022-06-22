@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.msg {color: red; font-size:small; display: none;}
+
+</style>
+
+<script type="text/javascript">
+
+/* 
+function Test()
+{
+	alert("함수 호출 확인~!!!");
+}
+ */
+ 
+ 
+//필수 입력 부분 함수 처리
+
+//여기에 뭔가... 문제가 있다 → false 표시를 해도 계속 true 로 넘어감
+//이부분에 문제 없음
+
+function formCheck()
+{
+	//return 	//-- 요청 페이지로 제어권 이전
+	//return 	//-- 현재 페이지에 그대로 남아있음
+	
+	//문서의 내용 점검 → 통과 → return true;		→ submit 액션 처리로 제어권 넘김
+	//문서의 내용 점검 → 반려 → return false;		→ submit 액션 처리로 제어권을 넘기지 않고 현재 페이지에 잔류
+	
+	/* 점검사항 체크...
+		→ 문제 발생(발견)						→	return false;
+		→ 문제가 발생하지 않음(발견되지 않음)	→	return true;
+	  */
+	// 아이디, 패스워드, 이름, 전화번호 필수입력
+		var userId = document.getElementById("id");
+		var userPwd = document.getElementById("pwd");
+		var userName = document.getElementById("name");
+		var userTel = document.getElementById("tel");
+		
+		var idMsg = document.getElementById("idMsg");
+		var pwdMsg = document.getElementById("pwdMsg");
+		var nameMsg = document.getElementById("nameMsg");
+		var telMsg = document.getElementById("telMsg");
+
+ 	// form  내부의 컨트롤에 대한 값을 변경하고 이 함수를 다시 호출할 때 마다
+ 	// 기존 안내되었던 에러 메세지를 지우고 다시 확인할 수 있도록 처리
+	idMsg.style.display = "none";
+	pwdMsg.style.display = "none";
+	nameMsg.style.display = "none";
+	telMsg.style.display = "none";
+	
+	
+	// ★각각 독립적인 if여야함
+	/* 	
+	if (uId.value == "")	//-- 아이디가 입력되지 않은 상황
+	{
+		alert("아이디가 입력되지 않았습니다.");
+	} 
+	*/
+	if(userId.value== "")		//-- 패스워드가 입력되지 않은 상황
+	{
+		//alert("패스워드가 입력되지 않은 상황");
+		idMsg.style.display = "inline";
+		id.focus();
+		return false;
+	}
+	
+	if(userPwd.value== "")		//-- 패스워드가 입력되지 않은 상황
+	{
+		//alert("패스워드가 입력되지 않은 상황");
+		pwdMsg.style.display = "inline";
+		pwd.focus();
+		return false;
+	}
+	
+	if(userName.value == "")	//-- 이름이 입력되지 않은 상황
+	{
+		//alert("이름이 입력되지 않은 상황");
+		nameMsg.style.display = "inline";
+		name.focus();
+		return false;
+	}
+	
+	if(userTel.value == "")		//-- 전화번호가 입력되지 않은 상황
+	{
+		//alert("전화번호가 입력되지 않은 상황");
+		telMsg.style.display = "inline";
+		tel.focus();
+		return false;
+	}
+	return true;
+}
+
+
+</script>
+
+
+</head>
+<body>
+
+<!-- 
+○ 데이터 송수신 실습 04
+- 회원 가입과 관련한 기본 정보를 입력받는 html 페이지를 작성한다.
+
+- 서버로 입력된 데이터를 전송하기 전에
+(즉, 클라이언트 측에서 작성한 내용을 서버에 제출하기 전에)
+입력 데이터에 대한 기본적인 검사 과정을 자바스크립트를 활용하여
+추가할 수 있도록 한다.
+
+아이디(*) 		[textbox]
+패스워드(*)		[password]
+이름(*)			[textbox]
+전화번호(*)		[textbox]
+
+성별 			● 여자  ○ 남자
+
+지역 			[ 서울 ▼ ]
+				  대전
+				  대구
+				  광주
+수강과목		□자바기초 □오라클중급 □JDBC심화 □JSP활용
+
+<회원가입>	<취소>
+
+- 필수 입력 사항(*)을 포함한 입력 내용을 구상한 후 회원 가입 버튼 클릭 시
+회원 입력 정보들의 내용을 출력하는 JSP 페이지(Receive04.jsp)를 구성하여		
+데이터를 전달할 수 있또록 한다.
+
+- 사용자의 최초 요청 주소는 
+http://localhost:8090/WebApp07/Send04.html 로 한다.
+
+○ Send04.html
+	Receive04.jsp		  	
+ -->
+
+
+
+<!-- 문제는 여기 있음 -->
+<div>
+<!-- 	※ form 태그의 『onsubmit』 : submit 액션이 발생한 경우
+		이 때 호출되는 자바스크립트 함수에서
+		return true 할 경우 Receive04.jsp 로 제어권이 넘어가게 되며
+		return false 할 경우 Receive04.jsp 로 제어권이 넘어가지 않는다. -->
+	<!-- <form action="Receive04.jsp" method="post" onsubmit="return Test();"> -->
+	<!-- <form action="Receive04.jsp" method="post" onsubmit="return false;"> -->
+	<!-- <form action="Receive04.jsp" method="post" onsubmit="return true;"> -->
+	<form action="Receive04.jsp" method="post" onsubmit="return formCheck();">
+		<table class="table">
+			<tr>
+				<th>아이디(*)</th>
+				<td>
+				<input type="text" class="txt" name="id" id="id" style="width: 150px;">
+				<span class="msg" id="idMsg">아이디를 입력해주세요.</span>
+				</td>
+			</tr>
+			<tr>
+				<th>패스워드(*)</th>
+				<td>
+				<input type="password" class="txt" name="pwd" id="pwd" style="width: 150px;">
+				<span class="msg" id="pwdMsg">비밀번호를 입력해주세요.</span>								
+				</td>
+			</tr>
+			<tr>
+				<th>이름(*)</th>
+				<td>
+				<input type="text" class="txt" name="name" id="name" style="width: 150px;">
+				<span class="msg" id="nameMsg">이름을 입력해주세요.</span>
+				</td>
+			</tr>
+			<tr>
+				<th>전화번호(*)</th>
+				<td>
+				<input type="text" class="txt" name="tel" id="tel" style="width: 150px;">
+				<span class="msg" id="telMsg">전화번호를 입력해주세요.</span>			
+				</td>
+			</tr>	
+			<tr>
+				<th>성별</th>
+				<td>
+				<label><input type="radio" name="GENDER" id="female" value="F">여성</label>
+				<label><input type="radio" name="GENDER" id="male" value="M">남성</label>
+				</td>
+			</tr>
+ 			<tr>
+					<th>지역</th>
+		  			<td>
+		  				<select name="CITY">
+		  					<option value="SEOUL">서울</option>
+		  					<option value="DAEJUN">대전</option>
+		  					<option value="GYAGJU">광주</option>
+		  					<option value="DAEGU">대구</option>
+		  				</select>
+		  			</td>		
+
+ 			</tr>
+			<tr>
+				<th>수강과목</th>
+				<td>
+				<label><input type="checkbox" id="check1" name="UserSubject" value="자바기초">자바기초</label>
+				<label><input type="checkbox" id="check2" name="UserSubject" value="오라클중급">오라클중급</label>
+				<label><input type="checkbox" id="check3" name="UserSubject" value="JDBC심화">JDBC심화</label>
+				<label><input type="checkbox" id="check4" name="UserSubject" value="JSP활용">JSP활용</label>								
+				</td>
+			</tr>
+ 			<tr>
+				<th colspan="2">
+<!-- 			<button type="submit" class="btn" style="width: 150px"
+				onclick="Test()">회원 가입</button> -->
+				<button type="submit" class="btn" style="width: 150px">회원 가입</button>				
+				<button type="reset" class="btn" style="width: 150px">취소</button>
+			</tr> 																			
+		</table>
+	</form>
+</div>
+
+</body>
+</html>
